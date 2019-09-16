@@ -23,4 +23,23 @@ function start() {
       console.log("-----------------------------------");
     });
 }
-
+inquirer.prompt([
+  {
+      type: 'list',
+      message: 'How would you like to view our products?',
+      choices: ['View All', 'View By Department', 'Exit'],
+      name: 'custom_view'
+  }
+]).then(function(view_option){
+  switch(view_option.custom_view){
+    case 'View All':
+        ViewAll();
+        break;
+    case 'View By Department':
+        ViewByDepartment();
+        break;
+    case 'Exit':
+      connection.end();
+      break;
+}
+});    
